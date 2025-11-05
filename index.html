@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Local Weather Dashboard</title>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <main class="container">
+    <header class="top">
+      <h1>Local Weather Dashboard</h1>
+      <p class="subtitle">Manually enter weather details and save them as cards.</p>
+    </header>
+
+    <section class="form-wrap">
+      <form id="weather-form" novalidate>
+        <div class="form-row">
+          <div class="field">
+            <label for="city">City <span class="req">*</span></label>
+            <input id="city" name="city" required autocomplete="off" />
+            <small class="error" data-for="city"></small>
+          </div>
+
+          <div class="field">
+            <label for="country">Country</label>
+            <input id="country" name="country" autocomplete="off" />
+            <small class="error" data-for="country"></small>
+          </div>
+
+          <div class="field">
+            <label for="unit">Unit</label>
+            <select id="unit" name="unit">
+              <option value="C">°C</option>
+              <option value="F">°F</option>
+            </select>
+            <small class="error" data-for="unit"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="temperature">Temperature</label>
+            <input id="temperature" name="temperature" type="number" step="any" inputmode="decimal" placeholder="e.g. 23" />
+            <small class="error" data-for="temperature"></small>
+          </div>
+
+          <div class="field">
+            <label for="feels">Feels Like</label>
+            <input id="feels" name="feels" type="number" step="any" inputmode="decimal" placeholder="e.g. 21" />
+            <small class="error" data-for="feels"></small>
+          </div>
+
+          <div class="field">
+            <label for="condition">Condition</label>
+            <input id="condition" name="condition" autocomplete="off" placeholder="sunny, rain, cloud, fog" />
+            <small class="error" data-for="condition"></small>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="humidity">Humidity (%)</label>
+            <input id="humidity" name="humidity" type="number" step="any" inputmode="decimal" placeholder="e.g. 60" />
+            <small class="error" data-for="humidity"></small>
+          </div>
+
+          <div class="field">
+            <label for="wind">Wind Speed</label>
+            <input id="wind" name="wind" type="number" step="any" inputmode="decimal" placeholder="e.g. 12" />
+            <small class="error" data-for="wind"></small>
+          </div>
+
+          <div class="actions">
+            <button type="submit" class="btn primary">Add</button>
+            <button type="button" id="clear-all" class="btn ghost">Clear All</button>
+          </div>
+        </div>
+      </form>
+    </section>
+
+    <section class="cards-section">
+      <div id="empty-state" class="empty-state">
+        <p>No weather cards yet. Use the form above to add a location.</p>
+      </div>
+
+      <div id="cards" class="cards-grid" aria-live="polite"></div>
+    </section>
+
+    <footer class="footer">
+      <small>Cards persist locally in your browser using localStorage.</small>
+    </footer>
+  </main>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
